@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+
+*{
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main_div{
+  background-color: #EEEEEE;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  height: 100vh;
+}
+
+button,.title{
+  cursor: pointer;
+}
+
+input:focus{
+  outline: none;
+}
+
+textarea{
+  resize: none;
+}
+textarea:focus{
+  outline: none;
+}
+
+.error_message{
+  color: #FF4545;
+}
+
+.error_inp{
+  border: 2px solid #FF4545;
+}
+
+.days_left,.todo_done{
+  font-size: 12px;
+}
+
+
+@media screen and (max-width:766px){
+  .main_div{
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,258 @@
+.logo_div{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: orange; */
+}
+
+.todo_div{
+  padding: 100px 10%;
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: pink; */
+}
+
+.logo_div>h1{
+  font-size: 96px;
+  font-weight: 700;
+  color: #007FDB;
+}
+
+.todo_content_div,.inactive_todo_content_div{
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+}
+
+.time_div{
+  width: 100%;
+  height: 20%;
+  background-color: rgba(255, 157, 0, 0.052);
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding: 0px 30px 15px 0px;
+  justify-content: end;
+  border-bottom: 2px solid orange;
+}
+
+.clock_div>h1{
+  font-weight: 700;
+}
+
+.date_div>h3{
+  font-weight: 400;
+}
+
+.content_div{
+  padding: 10px 20px;
+  border-radius: 0 0 10px 10px;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  /* background-color: pink; */
+}
+
+.todo_component_div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todo_status_div{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap:10px;
+}
+.todo_status_div>*{
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.todo_input_div{
+  display: flex;
+  gap: 15px;
+}
+
+.todo_input{
+  width: 80%;
+  background-color: #EBEFF2;
+  border: 2px solid #EBEFF2;
+  border-radius: 4px;
+  font-size: 18px;
+  padding: 4px;
+}
+.todo_input:focus{
+  outline: none;
+}
+.todo_add_btn{
+  border-radius: 4px;
+  width: 20%;
+  border: none;
+  background-color: #20EEB0;
+}
+.overlay {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) ; 
+  background-color: rgba(143, 143, 143, 0.633);
+  backdrop-filter: blur(5px); /* Adjust the blur radius as needed */
+  color: white;
+  padding: 20px;
+  z-index: 1;
+  border-radius: 15px;
+  width: 60%; /* Adjust the width as per your requirement */
+  height: 80%;
+}
+
+.overlay-content {
+  text-align: center;
+}
+
+.inactive_todo_content_div>*{
+  /* opacity: 0.5; */
+  pointer-events: none;
+}
+
+.close_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border:none;
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.close_button:hover{
+  rotate: 90deg;
+}
+
+.add_todo_title_div{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.add_todo_desc_div{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.add_todo_title{
+  border: 2px solid transparent;
+  background-color: rgba(255, 255, 255, 0.456);
+  backdrop-filter: blur(5px);
+  width: 100%;
+  font-size: 24px;
+  border-radius: 5px;
+  padding: 5px 8px;
+  font-weight: 500;
+}
+
+.todo_input_title_div{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.add_todo_desc{
+  background-color: rgba(255, 255, 255, 0.456);
+  backdrop-filter: blur(5px);
+  border: 2px solid transparent;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 10px ;
+  margin-bottom: 20px;
+}
+
+.inactive_todo>*{
+  pointer-events: none;
+}
+
+.todo_details_div{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.details_options_div{
+  display: flex;
+  gap: 15px;
+}
+.details_options_div>button{
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  /* color: white; */
+  font-size: 24px;
+}
+.delete_btn{
+  color: white;
+  background-color: #FF4545;
+}
+.done_btn{
+  background-color: #20EEB0;
+  color: white;
+}
+.undone_btn{
+  color: #20EEB0;
+  background-color: white;
+}
+
+.todo_done{
+  color: #20EEB0;
+}
+
+.add_btn{
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  /* color: white; */
+  font-size: 24px;
+  background-color: #20EEB0;
+  color: white;
+}
+
+@media screen and (max-width:766px){
+  .logo_div{
+    height: 20%;
+  }
+  .todo_div{
+    flex: 1;
+    height: 100%;
+    padding: 10px;
+  }
+  .details_options_div{
+    flex-direction: column;
+  }
+  .overlay{
+    width: 90%; 
+  }
+}
