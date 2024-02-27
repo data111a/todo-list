@@ -33,67 +33,62 @@ export const Todo = ({
   const yearLeft = todoYear - year;
   const monthLeft = todoMonth - month + yearLeft * 12;
   const daysLeft = todoDay - day + monthLeft * 30;
-  console.log(todoYear + "/" + todoMonth + "/" + todoDay);
 
   return (
     <>
-      <div>
-        <div className={`todo_component_div ${seeDetails && "inactive_todo"}`}>
-          <div className="todo_title_div">
-            <h3 className="title" onClick={handleSeeDetailsChange}>
-              {title}
-            </h3>
-            <p>
-              Deadline : {replaceAll(date, "-", "/")}{" "}
-              {!doneStatus ? (
-                <span
-                  className={`days_left ${
-                    daysLeft <= 0 ? "error_message" : ""
-                  }`}
-                >
-                  (Left : {daysLeft > 0 ? daysLeft : 0} day/days)
-                </span>
-              ) : (
-                <span className="todo_done">(Done)</span>
-              )}
-            </p>
-            {/* <p className="days_left">(Left : {daysLeft})</p> */}
-          </div>
-          <div className="todo_status_div">
-            {doneStatus ? (
-              <FaCheckCircle
-                style={{ color: "#20EEB0" }}
-                onClick={() => changeSatatus(index)}
-              />
+      <div className={`todo_component_div ${seeDetails && "inactive_todo"}`}>
+        <div className="todo_title_div">
+          <h3 className="title" onClick={handleSeeDetailsChange}>
+            {title}
+          </h3>
+          <p>
+            Deadline : {replaceAll(date, "-", "/")}{" "}
+            {!doneStatus ? (
+              <span
+                className={`days_left ${daysLeft <= 0 ? "error_message" : ""}`}
+              >
+                (Left : {daysLeft > 0 ? daysLeft : 0} day/days)
+              </span>
             ) : (
-              <FaRegCheckCircle
-                style={{ color: "#20EEB0" }}
-                onClick={() => changeSatatus(index)}
-              />
+              <span className="todo_done">(Done)</span>
             )}
-            <FaRegTrashAlt
-              onClick={() => deleteTodo(index)}
-              style={{ color: "#FF4545" }}
-            />
-          </div>
+          </p>
+          {/* <p className="days_left">(Left : {daysLeft})</p> */}
         </div>
-        {seeDetails ? (
-          <div className={"overlay"}>
-            <TodoDetails
-              handleSeeDetailsChange={handleSeeDetailsChange}
-              title={title}
-              desc={desc}
-              date={date}
-              status={doneStatus}
-              changeSatatus={changeSatatus}
-              index={index}
-              handleDeleteTodo={deleteTodo}
+        <div className="todo_status_div">
+          {doneStatus ? (
+            <FaCheckCircle
+              style={{ color: "#20EEB0" }}
+              onClick={() => changeSatatus(index)}
             />
-          </div>
-        ) : (
-          ""
-        )}
+          ) : (
+            <FaRegCheckCircle
+              style={{ color: "#20EEB0" }}
+              onClick={() => changeSatatus(index)}
+            />
+          )}
+          <FaRegTrashAlt
+            onClick={() => deleteTodo(index)}
+            style={{ color: "#FF4545" }}
+          />
+        </div>
       </div>
+      {seeDetails ? (
+        <div className={"overlay"}>
+          <TodoDetails
+            handleSeeDetailsChange={handleSeeDetailsChange}
+            title={title}
+            desc={desc}
+            date={date}
+            status={doneStatus}
+            changeSatatus={changeSatatus}
+            index={index}
+            handleDeleteTodo={deleteTodo}
+          />
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 };

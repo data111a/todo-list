@@ -3,12 +3,14 @@ import { DateComponent } from "./DateComponent";
 import { Todo } from "./Todo";
 import { TodoListHeader } from "./TodoListHeader";
 import { AddTodo } from "./AddTodo";
+import Filter from "./Filter";
 
 export const TodoList = () => {
   const [addTodoStatus, setAddTodoStatus] = useState(false);
   const [searchInp, setSearchInp] = useState("");
   const [currentDate] = useState(new Date());
   const [todoList, setTodoList] = useState([]);
+  const [showFinishedTasks, setShowFinishedTasks] = useState(null);
 
   // console.log("rerendered");
 
@@ -79,28 +81,39 @@ export const TodoList = () => {
             addTodoStatus={addTodoStatus}
             handleAddTodoChange={handleAddTodoChange}
           />
+          <Filter
+            showFinishedTasks={showFinishedTasks}
+            setShowFinishedTasks={setShowFinishedTasks}
+          />
           {/* <Todo /> */}
-          {todoList.map((todo, index) => {
-            if (todo != undefined) {
-              if (todo.title.includes(searchInp)) {
-                return (
-                  <Todo
-                    key={index}
-                    day={day}
-                    month={month}
-                    year={year}
-                    title={todo.title}
-                    desc={todo.desc}
-                    date={todo.date}
-                    doneStatus={todo.doneStatus}
-                    changeSatatus={handleTodoStatusChange}
-                    index={todo.index}
-                    deleteTodo={handleTodoDelete}
-                  />
-                );
+          <div className="todos_div">
+            {todoList.map((todo, index) => {
+              if (todo != undefined) {
+                if (todo.title.includes(searchInp)) {
+                  if (
+                    todo.doneStatus === showFinishedTasks ||
+                    showFinishedTasks === null
+                  ) {
+                    return (
+                      <Todo
+                        key={index}
+                        day={day}
+                        month={month}
+                        year={year}
+                        title={todo.title}
+                        desc={todo.desc}
+                        date={todo.date}
+                        doneStatus={todo.doneStatus}
+                        changeSatatus={handleTodoStatusChange}
+                        index={todo.index}
+                        deleteTodo={handleTodoDelete}
+                      />
+                    );
+                  }
+                }
               }
-            }
-          })}
+            })}
+          </div>
         </div>
       </div>
       {addTodoStatus ? (

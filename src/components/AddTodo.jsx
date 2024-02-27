@@ -6,9 +6,10 @@ import { replaceAll } from "../utils/replaceAll";
 export const AddTodo = ({ handleAddTodoChange, handleTodoAdd }) => {
   const [todoTitle, setTodoTitle] = useState("");
   const [todoDesc, setTodoDesc] = useState("");
-  const [todoDeadLine, setTodoDeadLine] = useState();
+  const [todoDeadLine, setTodoDeadLine] = useState("");
   const [descError, setDescErrorError] = useState("");
   const [titleError, setTitleError] = useState("");
+  const [dateError, setDateError] = useState("");
 
   const handleTitleChange = (e) => {
     const input = e.target.value;
@@ -35,12 +36,16 @@ export const AddTodo = ({ handleAddTodoChange, handleTodoAdd }) => {
   };
 
   const handleDateChange = (event) => {
+    setDateError("");
     setTodoDeadLine(event.target.value);
   };
 
   const checkAndGo = (title, desc, date) => {
+    console.log(date);
     if (title === "") {
       setTitleError("You have to fill title!");
+    } else if (date == "") {
+      setDateError("You have to fill this area!");
     } else {
       handleTodoAdd(title, desc, date);
       handleAddTodoChange();
@@ -105,6 +110,7 @@ export const AddTodo = ({ handleAddTodoChange, handleTodoAdd }) => {
             onChange={handleDateChange}
             className="date-input"
           />
+          <p className="error_message">{dateError}</p>
           <p>Selected Date: {replaceAll(todoDeadLine, "-", "/")}</p>
         </div>
       </div>
